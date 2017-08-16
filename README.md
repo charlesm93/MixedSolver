@@ -1,4 +1,4 @@
-# MixedSolver
+# Annex for the "Mixed Solver" paper
 Appendix with code for the mixed solver paper.
 
 This repository contains code that was used to compare two methods
@@ -12,4 +12,4 @@ available.
 The work here presented was conducted while I was at Metrum
 Research Group, LLC (metrumrg.com).
 
-For questions, please contact charles.margossian@columbia.edu
+For questions, please contact charles.margossian at columbia.edu
