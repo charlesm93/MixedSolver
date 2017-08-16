@@ -1,4 +1,4 @@
-# Annex for the "Mixed Solver" paper
+# Appendix Code for the "Mixed Solver" paper
 Appendix with code for the mixed solver paper.
 
 This repository contains code that was used to compare two methods
