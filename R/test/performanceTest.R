@@ -1,12 +1,6 @@
-rm(list = ls())
-gc()
-
 ## Performance Test for mixed solver
 ## The working directory should still be the R directory
 ## Randomly generate initial estimates (but from same distributions)
-
-setwd("/data/example-models/PKPD/torsten/R")
-
 rm(list = ls())
 gc()
 
