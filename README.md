@@ -1,7 +1,7 @@
 # Appendix Code for the "Mixed Solver" paper
 
-This repository contains code that was used to compare two methods
-to solve differential equations, with the Bayesian inference
+This repository contains code that was used to compare two
+differential equation solvers, with the Bayesian inference
 software Stan (mc-stan.org). I have included the Stan code, and
 the R scripts used to run the computer experiment.
 
@@ -20,7 +20,7 @@ For questions, please contact charles.margossian at columbia.edu
 The `fTwoCpt` and `fTwoCpt_mixed` directories contain the stan
 models, respectively using a full integrator and a mixed
 solver. The directories contain some additional files to
-simulate data to which the data gets fitted.
+simulate data to which the models get fitted.
 
 
 ### R

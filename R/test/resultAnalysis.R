@@ -87,31 +87,17 @@ compPlotTime + ggtitle(paste("Comparison between", testName, "and", testName2))
 
 dev.off()
 
-## Compare mean time required to compute 1000 effective independent
-## samples across all parameters. Note: a better metric is to compare
-## the time ratio between pairs of runs for individual parameters.
-mean(BoxData1$time) # 46201.29 s
-mean(BoxData2$time) # 22879.35 s
-mean(BoxData2$time) / mean(BoxData1$time)  # 0.4952102
 
-## Compare ratio between pairs of runs for individual
-## parameters. Look at mean ratio and standard deviation.
-tau <- BoxData2$time / BoxData1$time
+## SUMMARIZE RESULTS
 
-mean(tau)  # 0.5307879
-sd(tau)  # 0.183562
-
-
-## alternative analysis: take the run time to compute 1000
-## effective independent samples for each parameter.
-## Look at ratio for each pair of run. Suppresses variation
-## due to parameters.
+## What is the time required to compute 1000 effective independent
+## samples for each parameter? For each run, take the sum of tau
+## for each parameter and calculate the ratio between the two models.
 N <- 100
-nParameters <- length(parameters)  # 11
-tot <- N * nParameters  # 1100
+tot <- N * nParms  # 1100
 
-tau1 <- rep(0, N)
-tau2 <- rep(0, N)
+tau1 <- rep(0, N)  ## run time for full integrator
+tau2 <- rep(0, N)  ## run time for mixed solver
 for (i in 1:N) {
   tau1[i] <- sum(BoxData1$time[seq(from = i, to = tot, by = N)])
   tau2[i] <- sum(BoxData2$time[seq(from = i, to = tot, by = N)])
@@ -120,3 +106,29 @@ for (i in 1:N) {
 ratio = tau2 / tau1
 mean(ratio)  # 0.51110159
 sd(ratio)  # 0.1350837
+
+## ALTERNATIVE METRICS
+## The following metrics are considered not as good, because they
+## are affected by inter-parameter variations. The mean ratio
+## is practically the same, but the standard deviation tends
+## to be higher, as one would expect.
+
+## Compare tau, the mean time required to compute 1000 effective 
+## independent samples across all parameters. Not the best metric 
+## we can use for the analysis, because tau varies between 
+## parameters.
+mean(BoxData1$time) # 46201.29 s
+mean(BoxData2$time) # 22879.35 s
+mean(BoxData2$time) / mean(BoxData1$time)  # 0.4952102
+
+## Compare ratio between pairs of runs for individual
+## parameters. Look at mean ratio and standard deviation.
+## Also not the best metric, because ratio _may_ vary
+## between parameters.
+tau <- BoxData2$time / BoxData1$time
+
+mean(tau)  # 0.5307879
+sd(tau)  # 0.183562
+
+
+
